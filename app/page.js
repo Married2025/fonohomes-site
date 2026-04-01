@@ -5,7 +5,7 @@ export default function Home() {
       <p>Luxury Real Estate in Orange County</p>
 
       <img 
-        src="file:///C:/Users/mikef/OneDrive/Desktop/Headshots/headshot.jpg"
+        src="src="https://i.postimg.cc/N0m4cvrG/headshot.jpg""
         alt="Cameron"
         style={{ 
           width: "300px",
