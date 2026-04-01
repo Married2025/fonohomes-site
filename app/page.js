@@ -43,16 +43,28 @@ export default function Home() {
             Orange County Real Estate, Elevated.
           </p>
 
-          <button onClick={handleSearchClick}
-            style={{
-              marginTop: "20px",
-              padding: "14px 28px",
-              background: "#fff",
-              color: "#000",
-              border: "none"
-            }}>
-            Search Homes
-          </button>
+         <div style={{ marginTop: "20px" }}>
+  <button onClick={handleSearchClick}
+    style={{
+      marginRight: "10px",
+      padding: "14px 28px",
+      background: "#fff",
+      color: "#000",
+      border: "none"
+    }}>
+    Search Homes
+  </button>
+
+  <button onClick={() => setShowSeller(true)}
+    style={{
+      padding: "14px 28px",
+      background: "transparent",
+      color: "#fff",
+      border: "1px solid #fff"
+    }}>
+    Get Home Value
+  </button>
+</div>
         </div>
       </section>
 
