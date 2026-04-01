@@ -78,7 +78,7 @@ export default function Home() {
     fontWeight: "500",
     letterSpacing: "1px"
   }}>
-  SEARCH HOMES
+  OUR LISTINGS
 </button>
 
       <button style={{
