@@ -7,36 +7,39 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
 
-  const handleSearchClick = () => {
-    setShowPopup(true);
-  };
+  const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/26970318/unccakj/";
 
   const handleSubmit = async () => {
-    await fetch("https://formspree.io/f/mayvlkvd", {
+    await fetch(ZAPIER_WEBHOOK, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ email })
+      body: JSON.stringify({
+        email,
+        type: "buyer"
+      })
     });
 
     setShowPopup(false);
-
     window.location.href = "https://portal.onehome.com/en-US/share/2612211U90323";
   };
 
   const handleSellerSubmit = async () => {
-    await fetch("https://formspree.io/f/mayvlkvd", {
+    await fetch(ZAPIER_WEBHOOK, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ email, address })
+      body: JSON.stringify({
+        email,
+        address,
+        type: "seller"
+      })
     });
 
     setShowSellerPopup(false);
-
-    alert("We’ll send your home value shortly.");
+    alert("Your home valuation is being prepared.");
   };
 
   return (
@@ -60,269 +63,176 @@ export default function Home() {
           left: 0,
           width: "100%",
           height: "100%",
-          background: "linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.6))"
+          background: "rgba(0,0,0,0.75)"
         }} />
 
-        <div style={{ position: "relative", zIndex: 2, maxWidth: "800px" }}>
-          <h1 style={{
-            fontSize: "72px",
-            letterSpacing: "2px",
-            fontWeight: "500"
-          }}>
+        <div style={{ position: "relative" }}>
+          <h1 style={{ fontSize: "72px", letterSpacing: "2px" }}>
             Cameron Fono
           </h1>
 
-          <p style={{
-            color: "#ccc",
-            marginTop: "10px",
-            letterSpacing: "1px"
-          }}>
+          <p style={{ color: "#ccc", letterSpacing: "1px" }}>
             ORANGE COUNTY REAL ESTATE
           </p>
 
           <div style={{ marginTop: "30px" }}>
-            <button
-              onClick={handleSearchClick}
-              style={{
-                marginRight: "12px",
-                padding: "14px 36px",
-                background: "#fff",
-                color: "#000",
-                border: "none",
-                letterSpacing: "2px"
-              }}
-            >
+            <button onClick={() => setShowPopup(true)} style={btnPrimary}>
               VIEW OUR LISTINGS
             </button>
 
-            <button
-              onClick={() => setShowSellerPopup(true)}
-              style={{
-                padding: "14px 32px",
-                background: "transparent",
-                color: "#fff",
-                border: "1px solid #aaa"
-              }}
-            >
-              GET HOME VALUE
+            <button onClick={() => setShowSellerPopup(true)} style={btnSecondary}>
+              GET YOUR HOME VALUE
             </button>
           </div>
         </div>
       </section>
 
-      {/* VALUE SECTION */}
-      <section style={{
-        padding: "80px 20px",
-        textAlign: "center"
-      }}>
+      {/* SELLER SECTION */}
+      <section style={{ padding: "80px 20px", textAlign: "center" }}>
         <h2 style={{ fontSize: "36px" }}>
-          Elevated Real Estate Experience
+          Discover What Your Home Is Worth
         </h2>
 
-        <p style={{
-          color: "#aaa",
-          maxWidth: "600px",
-          margin: "20px auto"
-        }}>
-          Representing buyers and sellers across Orange County with a focus on luxury, strategy, and results.
+        <p style={{ color: "#aaa", maxWidth: "600px", margin: "20px auto" }}>
+          Get a custom valuation based on real market data, recent sales, and current buyer demand.
         </p>
-      </section>
 
-      {/* BIO */}
-      <section style={{
-        padding: "80px 20px",
-        display: "flex",
-        justifyContent: "center",
-        gap: "50px",
-        flexWrap: "wrap"
-      }}>
-        <img
-          src="https://i.postimg.cc/N0m4cvrG/headshot.jpg"
-          style={{
-            width: "260px",
-            borderRadius: "12px"
-          }}
-        />
-
-        <div style={{ maxWidth: "500px" }}>
-          <h2>Meet Cameron</h2>
-
-          <p style={{ color: "#aaa" }}>
-            Orange County real estate specialist delivering a refined, strategic approach to buying and selling luxury homes.
-          </p>
-        </div>
+        <button onClick={() => setShowSellerPopup(true)} style={btnPrimary}>
+          GET INSTANT HOME VALUE
+        </button>
       </section>
 
       {/* BUYER POPUP */}
       {showPopup && (
-        <div
-          onClick={() => setShowPopup(false)}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background: "rgba(0,0,0,0.85)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 9999
-          }}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              background: "#111",
-              padding: "40px",
-              borderRadius: "12px",
-              textAlign: "center",
-              width: "320px",
-              position: "relative"
-            }}
-          >
-            <button
-              onClick={() => setShowPopup(false)}
-              style={{
-                position: "absolute",
-                top: "10px",
-                right: "12px",
-                background: "transparent",
-                color: "#aaa",
-                border: "none",
-                fontSize: "20px",
-                cursor: "pointer"
-              }}
-            >
-              ×
-            </button>
+        <Popup onClose={() => setShowPopup(false)}>
+          <h2>Private Listings Access</h2>
 
-            <h2>Private Listings Access</h2>
+          <p style={{ color: "#aaa", fontSize: "14px" }}>
+            Enter your email to view all available homes.
+          </p>
 
-            <p style={{ color: "#aaa", fontSize: "14px" }}>
-              Enter your email to view all available homes.
-            </p>
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            style={input}
+          />
 
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email address"
-              style={{
-                width: "100%",
-                padding: "12px",
-                marginTop: "15px",
-                border: "none"
-              }}
-            />
-
-            <button
-              onClick={handleSubmit}
-              style={{
-                marginTop: "15px",
-                width: "100%",
-                padding: "12px",
-                background: "#fff",
-                color: "#000",
-                border: "none"
-              }}
-            >
-              View Listings
-            </button>
-          </div>
-        </div>
+          <button onClick={handleSubmit} style={btnFull}>
+            View Listings
+          </button>
+        </Popup>
       )}
 
       {/* SELLER POPUP */}
       {showSellerPopup && (
-        <div
-          onClick={() => setShowSellerPopup(false)}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background: "rgba(0,0,0,0.85)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 9999
-          }}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              background: "#111",
-              padding: "40px",
-              borderRadius: "12px",
-              textAlign: "center",
-              width: "320px",
-              position: "relative"
-            }}
-          >
-            <button
-              onClick={() => setShowSellerPopup(false)}
-              style={{
-                position: "absolute",
-                top: "10px",
-                right: "12px",
-                background: "transparent",
-                color: "#aaa",
-                border: "none",
-                fontSize: "20px",
-                cursor: "pointer"
-              }}
-            >
-              ×
-            </button>
+        <Popup onClose={() => setShowSellerPopup(false)}>
+          <h2>What’s Your Home Worth?</h2>
 
-            <h2>What’s Your Home Worth?</h2>
+          <p style={{ color: "#aaa", fontSize: "14px" }}>
+            Find out instantly — no obligation.
+          </p>
 
-            <p style={{ color: "#aaa", fontSize: "14px" }}>
-              Get a custom home valuation in minutes.
-            </p>
+          <input
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            placeholder="Property Address"
+            style={input}
+          />
 
-            <input
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              placeholder="Property Address"
-              style={{
-                width: "100%",
-                padding: "12px",
-                marginTop: "15px",
-                border: "none"
-              }}
-            />
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            style={input}
+          />
 
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email address"
-              style={{
-                width: "100%",
-                padding: "12px",
-                marginTop: "10px",
-                border: "none"
-              }}
-            />
-
-            <button
-              onClick={handleSellerSubmit}
-              style={{
-                marginTop: "15px",
-                width: "100%",
-                padding: "12px",
-                background: "#fff",
-                color: "#000",
-                border: "none"
-              }}
-            >
-              Get Home Value
-            </button>
-          </div>
-        </div>
+          <button onClick={handleSellerSubmit} style={btnFull}>
+            Get My Home Value
+          </button>
+        </Popup>
       )}
 
     </main>
   );
 }
+
+/* COMPONENT */
+
+function Popup({ children, onClose }) {
+  return (
+    <div onClick={onClose} style={overlay}>
+      <div onClick={(e) => e.stopPropagation()} style={popup}>
+        <button onClick={onClose} style={close}>×</button>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/* STYLES */
+
+const overlay = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  background: "rgba(0,0,0,0.85)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  zIndex: 9999
+};
+
+const popup = {
+  background: "#111",
+  padding: "40px",
+  borderRadius: "12px",
+  textAlign: "center",
+  width: "320px",
+  position: "relative"
+};
+
+const close = {
+  position: "absolute",
+  top: "10px",
+  right: "12px",
+  background: "transparent",
+  color: "#aaa",
+  border: "none",
+  fontSize: "20px",
+  cursor: "pointer"
+};
+
+const input = {
+  width: "100%",
+  padding: "12px",
+  marginTop: "10px",
+  border: "none"
+};
+
+const btnPrimary = {
+  marginRight: "12px",
+  padding: "14px 36px",
+  background: "#fff",
+  color: "#000",
+  border: "none",
+  letterSpacing: "2px"
+};
+
+const btnSecondary = {
+  padding: "14px 32px",
+  background: "transparent",
+  color: "#fff",
+  border: "1px solid #aaa"
+};
+
+const btnFull = {
+  marginTop: "15px",
+  width: "100%",
+  padding: "12px",
+  background: "#fff",
+  color: "#000",
+  border: "none"
+};
