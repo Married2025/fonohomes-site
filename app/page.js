@@ -93,6 +93,20 @@ export default function Home() {
 
   </div>
 </section>
+<section style={{
+  background: "#0a0a0a",
+  color: "#fff",
+  padding: "80px 20px",
+  textAlign: "center"
+}}>
+  <h2 style={{ fontSize: "36px", marginBottom: "20px" }}>
+    Elevated Real Estate Experience
+  </h2>
+
+  <p style={{ color: "#aaa", maxWidth: "600px", margin: "0 auto" }}>
+    Representing buyers and sellers across Orange County with a focus on luxury, strategy, and results.
+  </p>
+</section>
         Search Homes
       </button>
 
