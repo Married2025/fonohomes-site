@@ -144,15 +144,21 @@ export default function Home() {
     justifyContent: "center",
     zIndex: 9999
   }}>
-         <div style={{
-  background: "#111",
-  padding: "40px",
-  borderRadius: "10px",
-  textAlign: "center",
-  width: "300px",
-  position: "relative",
-  zIndex: 10000
-}}>
+        <button 
+  onClick={() => setShowPopup(false)}
+  style={{
+    position: "absolute",
+    top: "10px",
+    right: "10px",
+    background: "transparent",
+    color: "#aaa",
+    border: "none",
+    fontSize: "18px",
+    cursor: "pointer"
+  }}
+>
+  ✕
+</button>
             <h2>Access All Listings</h2>
 
             <input
