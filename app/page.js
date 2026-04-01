@@ -38,34 +38,73 @@ export default function Home() {
   textAlign: "center"
 }}>
 
-  {/* DARK OVERLAY */}
+ <section style={{
+  position: "relative",
+  height: "95vh",
+  backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center"
+}}>
+
+  {/* DARK LUXURY OVERLAY */}
   <div style={{
     position: "absolute",
     top: 0,
     left: 0,
     width: "100%",
     height: "100%",
-    background: "rgba(0,0,0,0.5)"
+    background: "linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.6))"
   }} />
 
-  {/* CONTENT */}
-  <div style={{ position: "relative", zIndex: 2 }}>
-    <h1 style={{ fontSize: "64px", color: "#fff" }}>
+  <div style={{ position: "relative", zIndex: 2, maxWidth: "800px" }}>
+    
+    <h1 style={{
+      fontSize: "72px",
+      color: "#fff",
+      fontWeight: "500",
+      letterSpacing: "2px"
+    }}>
       Cameron Fono
     </h1>
 
-    <p style={{ color: "#ddd" }}>
-      Orange County Real Estate, Elevated.
+    <p style={{
+      color: "#ccc",
+      marginTop: "10px",
+      letterSpacing: "1px"
+    }}>
+      ORANGE COUNTY REAL ESTATE
     </p>
 
-    <div style={{ marginTop: "20px" }}>
+    <div style={{ marginTop: "30px" }}>
       <button style={{
-        marginRight: "10px",
-        padding: "14px 28px",
+        marginRight: "12px",
+        padding: "14px 32px",
         background: "#fff",
         color: "#000",
-        border: "none"
+        border: "none",
+        fontWeight: "500",
+        letterSpacing: "1px"
       }}>
+        SEARCH HOMES
+      </button>
+
+      <button style={{
+        padding: "14px 32px",
+        background: "transparent",
+        color: "#fff",
+        border: "1px solid #aaa",
+        letterSpacing: "1px"
+      }}>
+        GET HOME VALUE
+      </button>
+    </div>
+
+  </div>
+</section>
         Search Homes
       </button>
 
