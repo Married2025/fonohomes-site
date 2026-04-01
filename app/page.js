@@ -3,69 +3,116 @@ import { useState } from "react";
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
-  const [showSeller, setShowSeller] = useState(false);
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState("");
+  const [showSellerPopup, setShowSellerPopup] = useState(false);
 
-  const sendLead = async (data) => {
+  const [email, setEmail] = useState("");
+  const [sellerEmail, setSellerEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+
+  const handleBuyerSubmit = async () => {
     try {
       await fetch("https://hooks.zapier.com/hooks/catch/26970318/unccakj/", {
         method: "POST",
-        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          type: "buyer",
+          email: email
+        })
       });
-      return true;
-    } catch (err) {
-      console.log(err);
-      return false;
+
+      window.location.href =
+        "https://portal.onehome.com/en-US/share/2612211U90323";
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
     }
-  };
-
-  const handleSubmit = async () => {
-    if (!email) return alert("Enter your email");
-
-    await sendLead({
-      type: "buyer",
-      email,
-    });
-
-    window.location.href =
-      "https://portal.onehome.com/en-US/share/2612211U90323";
   };
 
   const handleSellerSubmit = async () => {
-    if (!email || !address) {
-      return alert("Enter address and email");
+    try {
+      await fetch("https://hooks.zapier.com/hooks/catch/26970318/unccakj/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          type: "seller",
+          email: sellerEmail,
+          phone: phone,
+          address: address
+        })
+      });
+
+      alert("We received your info. We'll reach out shortly.");
+      setShowSellerPopup(false);
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
     }
-
-    await sendLead({
-      type: "seller",
-      address,
-      email,
-      phone,
-    });
-
-    alert("Got it — I’ll text you shortly.");
-    setShowSeller(false);
   };
 
   return (
-    <main style={{ background: "#0a0a0a", color: "#fff" }}>
-
+    <main style={{ background: "#0a0a0a", color: "#fff", fontFamily: "Arial" }}>
       {/* HERO */}
-      <section style={hero}>
-        <div style={overlay} />
+      <section
+        style={{
+          position: "relative",
+          height: "95vh",
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center"
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background:
+              "linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.6))"
+          }}
+        />
 
         <div style={{ position: "relative", zIndex: 2 }}>
-          <h1 style={{ fontSize: "72px" }}>Cameron Fono</h1>
-          <p style={{ color: "#ccc" }}>ORANGE COUNTY REAL ESTATE</p>
+          <h1 style={{ fontSize: "72px", letterSpacing: "2px" }}>
+            Cameron Fono
+          </h1>
+
+          <p style={{ color: "#ccc" }}>
+            ORANGE COUNTY REAL ESTATE
+          </p>
 
           <div style={{ marginTop: "30px" }}>
-            <button onClick={() => setShowPopup(true)} style={btnPrimary}>
+            <button
+              onClick={() => setShowPopup(true)}
+              style={{
+                marginRight: "12px",
+                padding: "14px 36px",
+                background: "#fff",
+                color: "#000",
+                border: "none"
+              }}
+            >
               VIEW OUR LISTINGS
             </button>
 
-            <button onClick={() => setShowSeller(true)} style={btnSecondary}>
+            <button
+              onClick={() => setShowSellerPopup(true)}
+              style={{
+                padding: "14px 36px",
+                background: "transparent",
+                color: "#fff",
+                border: "1px solid #aaa"
+              }}
+            >
               GET HOME VALUE
             </button>
           </div>
@@ -74,143 +121,154 @@ export default function Home() {
 
       {/* BUYER POPUP */}
       {showPopup && (
-        <Popup onClose={() => setShowPopup(false)}>
-          <h2>Private Listings Access</h2>
+        <div
+          onClick={() => setShowPopup(false)}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            background: "rgba(0,0,0,0.8)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: "#111",
+              padding: "40px",
+              borderRadius: "10px",
+              width: "320px",
+              position: "relative"
+            }}
+          >
+            <button
+              onClick={() => setShowPopup(false)}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "12px",
+                background: "transparent",
+                color: "#aaa",
+                border: "none",
+                fontSize: "20px",
+                cursor: "pointer"
+              }}
+            >
+              ×
+            </button>
 
-          <input
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={input}
-          />
+            <h2>Access Listings</h2>
 
-          <button onClick={handleSubmit} style={btnFull}>
-            View Listings
-          </button>
-        </Popup>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              style={{ width: "100%", padding: "10px", marginTop: "10px" }}
+            />
+
+            <button
+              onClick={handleBuyerSubmit}
+              style={{
+                marginTop: "15px",
+                width: "100%",
+                padding: "10px",
+                background: "#fff",
+                color: "#000",
+                border: "none"
+              }}
+            >
+              View Homes
+            </button>
+          </div>
+        </div>
       )}
 
       {/* SELLER POPUP */}
-      {showSeller && (
-        <Popup onClose={() => setShowSeller(false)}>
-          <h2>Get Your Home Value</h2>
+      {showSellerPopup && (
+        <div
+          onClick={() => setShowSellerPopup(false)}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            background: "rgba(0,0,0,0.8)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: "#111",
+              padding: "40px",
+              borderRadius: "10px",
+              width: "320px",
+              position: "relative"
+            }}
+          >
+            <button
+              onClick={() => setShowSellerPopup(false)}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "12px",
+                background: "transparent",
+                color: "#aaa",
+                border: "none",
+                fontSize: "20px"
+              }}
+            >
+              ×
+            </button>
 
-          <input
-            placeholder="Property Address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            style={input}
-          />
+            <h2>Get Your Home Value</h2>
 
-          <input
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={input}
-          />
+            <input
+              value={sellerEmail}
+              onChange={(e) => setSellerEmail(e.target.value)}
+              placeholder="Email"
+              style={{ width: "100%", padding: "10px", marginTop: "10px" }}
+            />
 
-          <input
-            placeholder="Phone (optional)"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            style={input}
-          />
+            <input
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Phone"
+              style={{ width: "100%", padding: "10px", marginTop: "10px" }}
+            />
 
-          <button onClick={handleSellerSubmit} style={btnFull}>
-            Get My Home Value
-          </button>
-        </Popup>
+            <input
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="Property Address"
+              style={{ width: "100%", padding: "10px", marginTop: "10px" }}
+            />
+
+            <button
+              onClick={handleSellerSubmit}
+              style={{
+                marginTop: "15px",
+                width: "100%",
+                padding: "10px",
+                background: "#fff",
+                color: "#000",
+                border: "none"
+              }}
+            >
+              Get My Home Value
+            </button>
+          </div>
+        </div>
       )}
-
     </main>
   );
 }
-
-/* POPUP */
-function Popup({ children, onClose }) {
-  return (
-    <div style={overlayFull} onClick={onClose}>
-      <div style={popup} onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} style={close}>×</button>
-        {children}
-      </div>
-    </div>
-  );
-}
-
-/* STYLES */
-const hero = {
-  position: "relative",
-  height: "95vh",
-  backgroundImage:
-    "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-};
-
-const overlay = {
-  position: "absolute",
-  width: "100%",
-  height: "100%",
-  background: "rgba(0,0,0,0.75)",
-};
-
-const overlayFull = {
-  position: "fixed",
-  inset: 0,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  background: "rgba(0,0,0,0.85)",
-  zIndex: 9999,
-};
-
-const popup = {
-  background: "#111",
-  padding: "40px",
-  borderRadius: "12px",
-  width: "320px",
-  textAlign: "center",
-  position: "relative",
-};
-
-const close = {
-  position: "absolute",
-  top: "10px",
-  right: "12px",
-  background: "none",
-  border: "none",
-  color: "#aaa",
-  fontSize: "20px",
-};
-
-const input = {
-  width: "100%",
-  padding: "12px",
-  marginTop: "10px",
-};
-
-const btnPrimary = {
-  padding: "14px 36px",
-  marginRight: "12px",
-  background: "#fff",
-  color: "#000",
-};
-
-const btnSecondary = {
-  padding: "14px 32px",
-  background: "transparent",
-  border: "1px solid #fff",
-  color: "#fff",
-};
-
-const btnFull = {
-  marginTop: "15px",
-  width: "100%",
-  padding: "12px",
-  background: "#fff",
-  color: "#000",
-};
