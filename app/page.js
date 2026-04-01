@@ -10,7 +10,7 @@ export default function Home() {
 
   const handleSubmit = () => {
     // 🔴 REPLACE THIS WITH YOUR MLS LINK
-    window.location.href = "https://www.zillow.com/huntington-beach-ca/";
+    window.location.href = "https://portal.onehome.com/en-US/share/2611042X00704";
   };
 
   return (
