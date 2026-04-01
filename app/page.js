@@ -132,7 +132,9 @@ export default function Home() {
 </section>
       {/* POPUP */}
      {showPopup && (
-  <div style={{
+ <div 
+  onClick={() => setShowPopup(false)}
+  style={{
     position: "fixed",
     top: 0,
     left: 0,
@@ -144,7 +146,7 @@ export default function Home() {
     justifyContent: "center",
     zIndex: 9999
   }}>
-        <button 
+       <button 
   onClick={() => setShowPopup(false)}
   style={{
     position: "absolute",
