@@ -28,18 +28,6 @@ export default function Home() {
 
  <section style={{
   position: "relative",
-  height: "90vh",
-  backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  textAlign: "center"
-}}>
-
- <section style={{
-  position: "relative",
   height: "95vh",
   backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
   backgroundSize: "cover",
