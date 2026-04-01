@@ -20,7 +20,7 @@ export default function Home() {
     });
 
     // 🔴 YOUR MLS LINK
-    window.location.href = "PASTE YOUR ONEHOME LINK HERE";
+    window.location.href = "https://portal.onehome.com/en-US/share/2612211U90323";
   };
 
   return (
