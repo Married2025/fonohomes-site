@@ -131,21 +131,81 @@ export default function Home() {
   </div>
 </section>
       {/* POPUP */}
-     {showPopup && (
- <div 
-  onClick={() => setShowPopup(false)}
-  style={{
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    background: "rgba(0,0,0,0.8)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 9999
-  }}>
+    {showPopup && (
+  <div
+    onClick={() => setShowPopup(false)}
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "rgba(0,0,0,0.8)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 9999
+    }}
+  >
+    <div
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        background: "#111",
+        padding: "40px",
+        borderRadius: "10px",
+        textAlign: "center",
+        width: "300px",
+        position: "relative"
+      }}
+    >
+
+      {/* CLOSE BUTTON */}
+      <button
+        onClick={() => setShowPopup(false)}
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "12px",
+          background: "transparent",
+          color: "#aaa",
+          border: "none",
+          fontSize: "20px",
+          cursor: "pointer"
+        }}
+      >
+        ×
+      </button>
+
+      <h2>Access Our Listings</h2>
+
+      <input
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Enter your email"
+        style={{
+          width: "100%",
+          padding: "10px",
+          marginTop: "10px"
+        }}
+      />
+
+      <button
+        onClick={handleSubmit}
+        style={{
+          marginTop: "15px",
+          width: "100%",
+          padding: "10px",
+          background: "#fff",
+          color: "#000",
+          border: "none"
+        }}
+      >
+        View Listings
+      </button>
+
+    </div>
+  </div>
+)}
        <button 
   onClick={() => setShowPopup(false)}
   style={{
