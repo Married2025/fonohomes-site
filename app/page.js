@@ -68,17 +68,18 @@ export default function Home() {
     </p>
 
     <div style={{ marginTop: "30px" }}>
-      <button style={{
-        marginRight: "12px",
-        padding: "14px 32px",
-        background: "#fff",
-        color: "#000",
-        border: "none",
-        fontWeight: "500",
-        letterSpacing: "1px"
-      }}>
-        SEARCH HOMES
-      </button>
+     <button onClick={handleSearchClick}
+  style={{
+    marginRight: "12px",
+    padding: "14px 32px",
+    background: "#fff",
+    color: "#000",
+    border: "none",
+    fontWeight: "500",
+    letterSpacing: "1px"
+  }}>
+  SEARCH HOMES
+</button>
 
       <button style={{
         padding: "14px 32px",
@@ -107,35 +108,8 @@ export default function Home() {
     Representing buyers and sellers across Orange County with a focus on luxury, strategy, and results.
   </p>
 </section>
-        Search Homes
-      </button>
-
-      <button style={{
-        padding: "14px 28px",
-        background: "transparent",
-        color: "#fff",
-        border: "1px solid #fff"
-      }}>
-        Get Home Value
-      </button>
-    </div>
-  </div>
-
-</section>
-
-  <button onClick={() => setShowSeller(true)}
-    style={{
-      padding: "14px 28px",
-      background: "transparent",
-      color: "#fff",
-      border: "1px solid #fff"
-    }}>
-    Get Home Value
-  </button>
-</div>
-        </div>
-      </section>
-
+    
+  
 <section style={{
   padding: "80px 20px",
   display: "flex",
