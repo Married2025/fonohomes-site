@@ -205,49 +205,6 @@ export default function Home() {
 
     </div>
   </div>
-)}
-       <button 
-  onClick={() => setShowPopup(false)}
-  style={{
-    position: "absolute",
-    top: "10px",
-    right: "10px",
-    background: "transparent",
-    color: "#aaa",
-    border: "none",
-    fontSize: "18px",
-    cursor: "pointer"
-  }}
->
-  ✕
-</button>
-            <h2>Access All Listings</h2>
-
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              style={{
-                width: "100%",
-                padding: "10px",
-                marginTop: "10px"
-              }}
-            />
-
-            <button onClick={handleSubmit}
-              style={{
-                marginTop: "15px",
-                width: "100%",
-                padding: "10px",
-                background: "#fff",
-                color: "#000",
-                border: "none"
-              }}>
-              View Homes
-            </button>
-          </div>
-        </div>
-      )}
 
     </main>
   );
