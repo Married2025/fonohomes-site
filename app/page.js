@@ -1,8 +1,8 @@
 export default function Home() {
   return (
-    <main>
+    <main style={{padding: "40px", fontFamily: "Arial"}}>
       <h1>Fono Homes</h1>
-      <p>Your site is live 🔥</p>
+      <p>Luxury Real Estate in Orange County</p>
     </main>
   );
 }
