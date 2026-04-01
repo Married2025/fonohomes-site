@@ -12,15 +12,13 @@ export default function Home() {
 
   const handleBuyerSubmit = async () => {
     try {
+      const formData = new FormData();
+      formData.append("type", "buyer");
+      formData.append("email", email);
+
       await fetch("https://hooks.zapier.com/hooks/catch/26970318/unccakj/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          type: "buyer",
-          email: email
-        })
+        body: formData
       });
 
       window.location.href =
@@ -32,17 +30,15 @@ export default function Home() {
 
   const handleSellerSubmit = async () => {
     try {
+      const formData = new FormData();
+      formData.append("type", "seller");
+      formData.append("email", sellerEmail);
+      formData.append("phone", phone);
+      formData.append("address", address);
+
       await fetch("https://hooks.zapier.com/hooks/catch/26970318/unccakj/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          type: "seller",
-          email: sellerEmail,
-          phone: phone,
-          address: address
-        })
+        body: formData
       });
 
       alert("We received your info. We'll reach out shortly.");
@@ -54,7 +50,6 @@ export default function Home() {
 
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", fontFamily: "Arial" }}>
-      {/* HERO */}
       <section
         style={{
           position: "relative",
@@ -82,13 +77,8 @@ export default function Home() {
         />
 
         <div style={{ position: "relative", zIndex: 2 }}>
-          <h1 style={{ fontSize: "72px", letterSpacing: "2px" }}>
-            Cameron Fono
-          </h1>
-
-          <p style={{ color: "#ccc" }}>
-            ORANGE COUNTY REAL ESTATE
-          </p>
+          <h1 style={{ fontSize: "72px" }}>Cameron Fono</h1>
+          <p style={{ color: "#ccc" }}>ORANGE COUNTY REAL ESTATE</p>
 
           <div style={{ marginTop: "30px" }}>
             <button
@@ -155,8 +145,7 @@ export default function Home() {
                 background: "transparent",
                 color: "#aaa",
                 border: "none",
-                fontSize: "20px",
-                cursor: "pointer"
+                fontSize: "20px"
               }}
             >
               ×
