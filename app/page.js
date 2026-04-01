@@ -144,13 +144,15 @@ export default function Home() {
     justifyContent: "center",
     zIndex: 9999
   }}>
-          <div style={{
-            background: "#111",
-            padding: "40px",
-            borderRadius: "10px",
-            textAlign: "center",
-            width: "300px"
-          }}>
+         <div style={{
+  background: "#111",
+  padding: "40px",
+  borderRadius: "10px",
+  textAlign: "center",
+  width: "300px",
+  position: "relative",
+  zIndex: 10000
+}}>
             <h2>Access All Listings</h2>
 
             <input
