@@ -3,14 +3,24 @@ import { useState } from "react";
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
+  const [email, setEmail] = useState("");
 
   const handleSearchClick = () => {
     setShowPopup(true);
   };
 
-  const handleSubmit = () => {
-    // 🔴 REPLACE THIS WITH YOUR MLS LINK
-    window.location.href = "https://portal.onehome.com/en-US/share/2611042X00704";
+  const handleSubmit = async () => {
+    // 🔥 SEND EMAIL TO FREE API
+    await fetch("https://formspree.io/f/mayvlkvd", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email })
+    });
+
+    // 🔴 YOUR MLS LINK
+    window.location.href = "PASTE YOUR ONEHOME LINK HERE";
   };
 
   return (
@@ -39,33 +49,10 @@ export default function Home() {
               padding: "14px 28px",
               background: "#fff",
               color: "#000",
-              border: "none",
-              cursor: "pointer"
+              border: "none"
             }}>
             Search Homes
           </button>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section style={{
-        padding: "80px 20px",
-        display: "flex",
-        justifyContent: "center",
-        gap: "50px",
-        flexWrap: "wrap"
-      }}>
-        <img
-          src="https://i.postimg.cc/N0m4cvrG/headshot.jpg"
-          style={{ width: "280px", borderRadius: "16px" }}
-        />
-
-        <div style={{ maxWidth: "500px" }}>
-          <h2>Meet Cameron</h2>
-          <p style={{ opacity: 0.8 }}>
-            Orange County native specializing in luxury real estate.
-            Strategic marketing. Strong negotiation. Proven results.
-          </p>
         </div>
       </section>
 
@@ -90,11 +77,10 @@ export default function Home() {
             width: "300px"
           }}>
             <h2>Access All Listings</h2>
-            <p style={{ fontSize: "14px", opacity: 0.7 }}>
-              Enter your email to view homes
-            </p>
 
             <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
               style={{
                 width: "100%",
@@ -110,21 +96,10 @@ export default function Home() {
                 padding: "10px",
                 background: "#fff",
                 color: "#000",
-                border: "none",
-                cursor: "pointer"
+                border: "none"
               }}>
               View Homes
             </button>
-
-            <p onClick={() => setShowPopup(false)}
-              style={{
-                marginTop: "10px",
-                fontSize: "12px",
-                cursor: "pointer",
-                opacity: 0.5
-              }}>
-              Close
-            </p>
           </div>
         </div>
       )}
