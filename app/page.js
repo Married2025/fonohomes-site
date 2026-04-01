@@ -1,6 +1,20 @@
+"use client";
+import { useState } from "react";
+
 export default function Home() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleSearchClick = () => {
+    setShowPopup(true);
+  };
+
+  const handleSubmit = () => {
+    // 🔴 REPLACE THIS WITH YOUR MLS LINK
+    window.location.href = "https://www.zillow.com/huntington-beach-ca/";
+  };
+
   return (
-    <main style={{ fontFamily: "Arial", background: "#0a0a0a", color: "#fff" }}>
+    <main style={{ background: "#0a0a0a", color: "#fff", fontFamily: "Arial" }}>
 
       {/* HERO */}
       <section style={{
@@ -19,46 +33,17 @@ export default function Home() {
             Orange County Real Estate, Elevated.
           </p>
 
-          <button style={{
-            marginTop: "20px",
-            padding: "14px 28px",
-            background: "#fff",
-            color: "#000",
-            border: "none"
-          }}>
+          <button onClick={handleSearchClick}
+            style={{
+              marginTop: "20px",
+              padding: "14px 28px",
+              background: "#fff",
+              color: "#000",
+              border: "none",
+              cursor: "pointer"
+            }}>
             Search Homes
           </button>
-        </div>
-      </section>
-
-      {/* FEATURED */}
-      <section style={{ padding: "80px 20px" }}>
-        <h2 style={{ textAlign: "center" }}>Featured Listings</h2>
-
-        <div style={{
-          display: "flex",
-          gap: "20px",
-          justifyContent: "center",
-          marginTop: "40px",
-          flexWrap: "wrap"
-        }}>
-          {[1,2,3].map((item) => (
-            <div key={item} style={{
-              width: "300px",
-              background: "#111",
-              borderRadius: "10px",
-              overflow: "hidden"
-            }}>
-              <img src="https://images.unsplash.com/photo-1560184897-ae75f418493e"
-                style={{ width: "100%" }} />
-              <div style={{ padding: "15px" }}>
-                <h3>$1,250,000</h3>
-                <p style={{ opacity: 0.7 }}>
-                  Huntington Beach
-                </p>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -83,6 +68,66 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* POPUP */}
+      {showPopup && (
+        <div style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background: "rgba(0,0,0,0.8)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        }}>
+          <div style={{
+            background: "#111",
+            padding: "40px",
+            borderRadius: "10px",
+            textAlign: "center",
+            width: "300px"
+          }}>
+            <h2>Access All Listings</h2>
+            <p style={{ fontSize: "14px", opacity: 0.7 }}>
+              Enter your email to view homes
+            </p>
+
+            <input
+              placeholder="Email"
+              style={{
+                width: "100%",
+                padding: "10px",
+                marginTop: "10px"
+              }}
+            />
+
+            <button onClick={handleSubmit}
+              style={{
+                marginTop: "15px",
+                width: "100%",
+                padding: "10px",
+                background: "#fff",
+                color: "#000",
+                border: "none",
+                cursor: "pointer"
+              }}>
+              View Homes
+            </button>
+
+            <p onClick={() => setShowPopup(false)}
+              style={{
+                marginTop: "10px",
+                fontSize: "12px",
+                cursor: "pointer",
+                opacity: 0.5
+              }}>
+              Close
+            </p>
+          </div>
+        </div>
+      )}
 
     </main>
   );
