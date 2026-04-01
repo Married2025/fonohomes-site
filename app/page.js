@@ -55,7 +55,27 @@ export default function Home() {
           </button>
         </div>
       </section>
+/* ABOUT SECTION */
+<section style={{
+  padding: "80px 20px",
+  display: "flex",
+  justifyContent: "center",
+  gap: "50px",
+  flexWrap: "wrap"
+}}>
+  <img
+    src="https://i.postimg.cc/N0m4cvrG/headshot.jpg"
+    style={{ width: "280px", borderRadius: "16px" }}
+  />
 
+  <div style={{ maxWidth: "500px" }}>
+    <h2>Meet Cameron</h2>
+    <p style={{ opacity: 0.8 }}>
+      Orange County native specializing in luxury real estate.
+      Strategic marketing. Strong negotiation. Proven results.
+    </p>
+  </div>
+</section>
       {/* POPUP */}
       {showPopup && (
         <div style={{
