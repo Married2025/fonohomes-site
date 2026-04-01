@@ -68,17 +68,17 @@ export default function Home() {
     </p>
 
     <div style={{ marginTop: "30px" }}>
-     <button onClick={handleSearchClick}
+    <button onClick={handleSearchClick}
   style={{
     marginRight: "12px",
-    padding: "14px 32px",
+    padding: "14px 36px",
     background: "#fff",
     color: "#000",
     border: "none",
-    fontWeight: "500",
-    letterSpacing: "1px"
+    fontWeight: "400",
+    letterSpacing: "2px"
   }}>
-  OUR LISTINGS
+  VIEW OUR LISTINGS
 </button>
 
       <button style={{
