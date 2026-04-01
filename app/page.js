@@ -6,74 +6,74 @@ export default function Home() {
   const [showSellerPopup, setShowSellerPopup] = useState(false);
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/26970318/unccakj/";
 
   const handleSubmit = async () => {
-    await fetch(ZAPIER_WEBHOOK, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email,
-        type: "buyer"
-      })
-    });
+    if (!email) return alert("Please enter your email");
 
-    setShowPopup(false);
-    window.location.href = "https://portal.onehome.com/en-US/share/2612211U90323";
+    try {
+      setLoading(true);
+
+      await fetch(ZAPIER_WEBHOOK, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email,
+          type: "buyer"
+        })
+      });
+
+      setShowPopup(false);
+      window.location.href = "https://portal.onehome.com/en-US/share/2612211U90323";
+    } catch (err) {
+      alert("Something went wrong. Try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSellerSubmit = async () => {
-    await fetch(ZAPIER_WEBHOOK, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email,
-        address,
-        type: "seller"
-      })
-    });
+    if (!email || !address) {
+      return alert("Please enter both address and email");
+    }
 
-    setShowSellerPopup(false);
-    alert("Your home valuation is being prepared.");
+    try {
+      setLoading(true);
+
+      await fetch(ZAPIER_WEBHOOK, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email,
+          address,
+          type: "seller"
+        })
+      });
+
+      setShowSellerPopup(false);
+      alert("Success! We'll text you shortly.");
+    } catch (err) {
+      alert("Submission failed. Try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", fontFamily: "Arial" }}>
 
       {/* HERO */}
-      <section style={{
-        position: "relative",
-        height: "95vh",
-        backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center"
-      }}>
-        <div style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background: "rgba(0,0,0,0.75)"
-        }} />
-
+      <section style={hero}>
+        <div style={overlay} />
         <div style={{ position: "relative" }}>
-          <h1 style={{ fontSize: "72px", letterSpacing: "2px" }}>
-            Cameron Fono
-          </h1>
-
-          <p style={{ color: "#ccc", letterSpacing: "1px" }}>
-            ORANGE COUNTY REAL ESTATE
-          </p>
+          <h1 style={{ fontSize: "72px" }}>Cameron Fono</h1>
+          <p style={{ color: "#ccc" }}>ORANGE COUNTY REAL ESTATE</p>
 
           <div style={{ marginTop: "30px" }}>
             <button onClick={() => setShowPopup(true)} style={btnPrimary}>
@@ -89,12 +89,9 @@ export default function Home() {
 
       {/* SELLER SECTION */}
       <section style={{ padding: "80px 20px", textAlign: "center" }}>
-        <h2 style={{ fontSize: "36px" }}>
-          Discover What Your Home Is Worth
-        </h2>
-
-        <p style={{ color: "#aaa", maxWidth: "600px", margin: "20px auto" }}>
-          Get a custom valuation based on real market data, recent sales, and current buyer demand.
+        <h2>Discover What Your Home Is Worth</h2>
+        <p style={{ color: "#aaa" }}>
+          Get a custom valuation based on real market data.
         </p>
 
         <button onClick={() => setShowSellerPopup(true)} style={btnPrimary}>
@@ -107,10 +104,6 @@ export default function Home() {
         <Popup onClose={() => setShowPopup(false)}>
           <h2>Private Listings Access</h2>
 
-          <p style={{ color: "#aaa", fontSize: "14px" }}>
-            Enter your email to view all available homes.
-          </p>
-
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -119,7 +112,7 @@ export default function Home() {
           />
 
           <button onClick={handleSubmit} style={btnFull}>
-            View Listings
+            {loading ? "Loading..." : "View Listings"}
           </button>
         </Popup>
       )}
@@ -128,10 +121,6 @@ export default function Home() {
       {showSellerPopup && (
         <Popup onClose={() => setShowSellerPopup(false)}>
           <h2>What’s Your Home Worth?</h2>
-
-          <p style={{ color: "#aaa", fontSize: "14px" }}>
-            Find out instantly — no obligation.
-          </p>
 
           <input
             value={address}
@@ -148,7 +137,7 @@ export default function Home() {
           />
 
           <button onClick={handleSellerSubmit} style={btnFull}>
-            Get My Home Value
+            {loading ? "Submitting..." : "Get My Home Value"}
           </button>
         </Popup>
       )}
@@ -158,7 +147,6 @@ export default function Home() {
 }
 
 /* COMPONENT */
-
 function Popup({ children, onClose }) {
   return (
     <div onClick={onClose} style={overlay}>
@@ -172,17 +160,25 @@ function Popup({ children, onClose }) {
 
 /* STYLES */
 
+const hero = {
+  position: "relative",
+  height: "95vh",
+  backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center"
+};
+
 const overlay = {
-  position: "fixed",
+  position: "absolute",
   top: 0,
   left: 0,
   width: "100%",
   height: "100%",
-  background: "rgba(0,0,0,0.85)",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  zIndex: 9999
+  background: "rgba(0,0,0,0.75)"
 };
 
 const popup = {
@@ -217,8 +213,7 @@ const btnPrimary = {
   padding: "14px 36px",
   background: "#fff",
   color: "#000",
-  border: "none",
-  letterSpacing: "2px"
+  border: "none"
 };
 
 const btnSecondary = {
