@@ -3,7 +3,9 @@ import { useState } from "react";
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
+  const [showSellerPopup, setShowSellerPopup] = useState(false);
   const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
 
   const handleSearchClick = () => {
     setShowPopup(true);
@@ -21,6 +23,20 @@ export default function Home() {
     setShowPopup(false);
 
     window.location.href = "https://portal.onehome.com/en-US/share/2612211U90323";
+  };
+
+  const handleSellerSubmit = async () => {
+    await fetch("https://formspree.io/f/mayvlkvd", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, address })
+    });
+
+    setShowSellerPopup(false);
+
+    alert("We’ll send your home value shortly.");
   };
 
   return (
@@ -80,6 +96,7 @@ export default function Home() {
             </button>
 
             <button
+              onClick={() => setShowSellerPopup(true)}
               style={{
                 padding: "14px 32px",
                 background: "transparent",
@@ -136,7 +153,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* POPUP */}
+      {/* BUYER POPUP */}
       {showPopup && (
         <div
           onClick={() => setShowPopup(false)}
@@ -164,7 +181,6 @@ export default function Home() {
               position: "relative"
             }}
           >
-            {/* CLOSE BUTTON */}
             <button
               onClick={() => setShowPopup(false)}
               style={{
@@ -211,6 +227,97 @@ export default function Home() {
               }}
             >
               View Listings
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* SELLER POPUP */}
+      {showSellerPopup && (
+        <div
+          onClick={() => setShowSellerPopup(false)}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0,0,0,0.85)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: "#111",
+              padding: "40px",
+              borderRadius: "12px",
+              textAlign: "center",
+              width: "320px",
+              position: "relative"
+            }}
+          >
+            <button
+              onClick={() => setShowSellerPopup(false)}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "12px",
+                background: "transparent",
+                color: "#aaa",
+                border: "none",
+                fontSize: "20px",
+                cursor: "pointer"
+              }}
+            >
+              ×
+            </button>
+
+            <h2>What’s Your Home Worth?</h2>
+
+            <p style={{ color: "#aaa", fontSize: "14px" }}>
+              Get a custom home valuation in minutes.
+            </p>
+
+            <input
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="Property Address"
+              style={{
+                width: "100%",
+                padding: "12px",
+                marginTop: "15px",
+                border: "none"
+              }}
+            />
+
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email address"
+              style={{
+                width: "100%",
+                padding: "12px",
+                marginTop: "10px",
+                border: "none"
+              }}
+            />
+
+            <button
+              onClick={handleSellerSubmit}
+              style={{
+                marginTop: "15px",
+                width: "100%",
+                padding: "12px",
+                background: "#fff",
+                color: "#000",
+                border: "none"
+              }}
+            >
+              Get Home Value
             </button>
           </div>
         </div>
