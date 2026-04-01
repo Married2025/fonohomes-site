@@ -26,34 +26,61 @@ export default function Home() {
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", fontFamily: "Arial" }}>
 
-      {/* HERO */}
-      <section style={{
-        height: "90vh",
-        backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center"
-      }}>
-        <div>
-          <h1 style={{ fontSize: "64px" }}>Cameron Fono</h1>
-          <p style={{ opacity: 0.8 }}>
-            Orange County Real Estate, Elevated.
-          </p>
+ <section style={{
+  position: "relative",
+  height: "90vh",
+  backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center"
+}}>
 
-         <div style={{ marginTop: "20px" }}>
-  <button onClick={handleSearchClick}
-    style={{
-      marginRight: "10px",
-      padding: "14px 28px",
-      background: "#fff",
-      color: "#000",
-      border: "none"
-    }}>
-    Search Homes
-  </button>
+  {/* DARK OVERLAY */}
+  <div style={{
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    background: "rgba(0,0,0,0.5)"
+  }} />
+
+  {/* CONTENT */}
+  <div style={{ position: "relative", zIndex: 2 }}>
+    <h1 style={{ fontSize: "64px", color: "#fff" }}>
+      Cameron Fono
+    </h1>
+
+    <p style={{ color: "#ddd" }}>
+      Orange County Real Estate, Elevated.
+    </p>
+
+    <div style={{ marginTop: "20px" }}>
+      <button style={{
+        marginRight: "10px",
+        padding: "14px 28px",
+        background: "#fff",
+        color: "#000",
+        border: "none"
+      }}>
+        Search Homes
+      </button>
+
+      <button style={{
+        padding: "14px 28px",
+        background: "transparent",
+        color: "#fff",
+        border: "1px solid #fff"
+      }}>
+        Get Home Value
+      </button>
+    </div>
+  </div>
+
+</section>
 
   <button onClick={() => setShowSeller(true)}
     style={{
