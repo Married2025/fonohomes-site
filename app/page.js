@@ -55,7 +55,7 @@ export default function Home() {
           </button>
         </div>
       </section>
-/* ABOUT SECTION */
+
 <section style={{
   padding: "80px 20px",
   display: "flex",
