@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", fontFamily: "Arial" }}>
 
- <section style={{
+<section style={{
   position: "relative",
   height: "95vh",
   backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
