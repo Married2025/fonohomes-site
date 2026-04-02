@@ -36,7 +36,6 @@ export default function Home() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        textAlign: "center",
         paddingTop: "80px",
         position: "relative"
       }}>
@@ -45,38 +44,49 @@ export default function Home() {
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "rgba(0,0,0,0.4)"
+          background: "rgba(0,0,0,0.45)"
         }} />
 
         {/* HERO CONTENT */}
-        <div style={{ position: "relative", zIndex: 2 }}>
+        <div style={{
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          alignItems: "center",
+          gap: "80px",
+          maxWidth: "1200px",
+          width: "100%",
+          justifyContent: "center",
+          flexWrap: "wrap"
+        }}>
 
-          {/* HEADSHOT */}
+          {/* LEFT - HEADSHOT (LARGE) */}
           <img
             src="https://res.cloudinary.com/dujnu0pgr/image/upload/f_auto,q_auto:best,w_800/headshot_tckbah"
             style={{
-              width: "140px",
-              height: "140px",
+              width: "420px",
+              height: "520px",
               objectFit: "cover",
-              borderRadius: "50%",
-              marginBottom: "30px",
-              border: "3px solid white",
-              boxShadow: "0 10px 40px rgba(0,0,0,0.3)"
+              borderRadius: "12px",
+              boxShadow: "0 40px 100px rgba(0,0,0,0.3)"
             }}
           />
 
-          <h1 style={{ fontSize: "80px", fontWeight: "300", color: "#fff" }}>
-            Cameron Fono
-          </h1>
+          {/* RIGHT - TEXT */}
+          <div style={{ color: "#fff", maxWidth: "500px" }}>
+            <h1 style={{ fontSize: "80px", fontWeight: "300", lineHeight: "1.1" }}>
+              Cameron Fono
+            </h1>
 
-          <p style={{ letterSpacing: "4px", color: "#eaeaea", marginTop: "10px" }}>
-            ORANGE COUNTY REAL ESTATE
-          </p>
+            <p style={{ letterSpacing: "4px", marginTop: "15px", color: "#eaeaea" }}>
+              ORANGE COUNTY REAL ESTATE
+            </p>
+          </div>
 
         </div>
       </section>
 
-      {/* BIO (TEXT ONLY NOW) */}
+      {/* BIO */}
       <section style={{
         padding: "140px 20px",
         display: "flex",
