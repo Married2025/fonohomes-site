@@ -164,8 +164,12 @@ export default function Home() {
               on precision, communication, and results.
             </p>
 
+            {/* CTA LINK */}
             <div style={{ marginTop: "50px" }}>
-              <button
+              <a
+                href="https://agent.onehome.com/en-US/properties/map?token=eyJPU04iOiJDUk1MU00iLCJ0eXBlIjoiMSIsInNldGlkIjoiNzk4ODY0MyIsInNldGtleSI6Ijg2MSIsImVtYWlsIjoiY2FtZXJvbkBmb25vaG9tZXMuY29tIiwicmVzb3VyY2VpZCI6MCwiYWdlbnRpZCI6MjE4MDY2MiwiaXNkZWx0YSI6ZmFsc2UsIlZpZXdNb2RlIjoiMiIsInNvdXJjZSI6Ik1hdHJpeFVJIn0%3D&SMS=0&searchId=a89a6711-b69c-3895-862b-95cae49861aa&group=eyJhbGciOiJIUzI1NiJ9.eyJhZ2VudElkIjoiMjE4MDY2MiIsImdyb3VwSWQiOiIzY2ZmODY3MS0xODcwLTNlOTgtYjk0OS0yOGRjNTAxYTUzZDQifQ.HULSlqClfXtj9BxIFZIM_QiKa2kpg3XMDUB_jVZVr80"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   padding: "16px 36px",
                   border: "1px solid #c6a87d",
@@ -175,10 +179,18 @@ export default function Home() {
                   fontSize: "12px",
                   textTransform: "uppercase",
                   cursor: "pointer",
+                  textDecoration: "none",
+                  display: "inline-block",
                 }}
+                onMouseEnter={(e) =>
+                  (e.target.style.background = "#c6a87d")
+                }
+                onMouseLeave={(e) =>
+                  (e.target.style.background = "transparent")
+                }
               >
                 View Listings
-              </button>
+              </a>
             </div>
           </div>
         </div>
