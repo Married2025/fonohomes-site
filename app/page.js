@@ -149,7 +149,7 @@ export default function Home() {
             flexWrap: "wrap",
           }}
         >
-          {/* HEADSHOT (UPGRADED) */}
+          {/* HEADSHOT */}
           <div
             style={{
               width: "380px",
@@ -161,7 +161,7 @@ export default function Home() {
             }}
           >
             <img
-              src="/headshot.jpg"
+              src="https://raw.githubusercontent.com/Married2025/fonohomes-site/refs/heads/main/headshot.jpg"
               alt="Cameron Fono"
               style={{
                 width: "100%",
