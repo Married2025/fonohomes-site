@@ -27,19 +27,28 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* HERO - HB PIER DRONE */}
+      {/* HERO - YOUR HB PIER IMAGE */}
       <section style={{
         height: "100vh",
-        backgroundImage: "url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21')",
+        backgroundImage: "url('/hb-pier.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        paddingTop: "80px"
+        paddingTop: "80px",
+        position: "relative"
       }}>
-        <div>
+
+        {/* DARK OVERLAY */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(0,0,0,0.35)"
+        }} />
+
+        <div style={{ position: "relative", zIndex: 2 }}>
           <h1 style={{ fontSize: "90px", fontWeight: "300", color: "#fff" }}>
             Cameron Fono
           </h1>
@@ -179,7 +188,6 @@ export default function Home() {
           </p>
         </div>
 
-        {/* SOCIALS */}
         <div style={{
           marginTop: "40px",
           display: "flex",
