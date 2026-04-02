@@ -1,218 +1,125 @@
-"use client";
-import { useState } from "react";
+<section
+  style={{
+    height: "100vh",
+    backgroundImage: "url('/hb-pier.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: "80px",
+    position: "relative",
+  }}
+>
 
-export default function Home() {
-  const [showPopup, setShowPopup] = useState(false);
+  {/* DARK GRADIENT OVERLAY (adds depth) */}
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
+      background:
+        "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.65) 100%)",
+    }}
+  />
 
-  return (
-    <main style={{ fontFamily: "Helvetica Neue, sans-serif", background: "#f8f6f2", color: "#1a1a1a" }}>
+  {/* CONTENT */}
+  <div
+    style={{
+      position: "relative",
+      zIndex: 2,
+      display: "flex",
+      alignItems: "center",
+      gap: "80px",
+      maxWidth: "1200px",
+      width: "100%",
+      justifyContent: "flex-start",
+      paddingLeft: "60px",
+      flexWrap: "wrap",
+    }}
+  >
 
-      {/* NAVBAR */}
-      <nav style={{
-        position: "fixed",
-        top: 0,
-        width: "100%",
-        padding: "20px 40px",
-        display: "flex",
-        justifyContent: "space-between",
-        background: "rgba(255,255,255,0.7)",
-        backdropFilter: "blur(10px)",
-        zIndex: 1000
-      }}>
-        <div style={{ fontWeight: "600" }}>Cameron Fono</div>
-        <div style={{ display: "flex", gap: "30px" }}>
-          <span>Listings</span>
-          <span>About</span>
-          <span>Contact</span>
-        </div>
-      </nav>
+    {/* HEADSHOT (slightly bigger + elevated) */}
+    <img
+      src="https://res.cloudinary.com/dujnu0pgr/image/upload/f_auto,q_auto:best,w_800/headshot_tckbah"
+      style={{
+        width: "360px",
+        height: "450px",
+        objectFit: "cover",
+        borderRadius: "14px",
+        boxShadow: "0 60px 140px rgba(0,0,0,0.5)",
+        transform: "translateY(20px)",
+      }}
+    />
 
-      {/* HERO */}
-      <section style={{
-        height: "100vh",
-        backgroundImage: "url('/hb-pier.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        paddingTop: "80px",
-        position: "relative"
-      }}>
+    {/* TEXT */}
+    <div style={{ color: "#fff", maxWidth: "520px" }}>
+      
+      <p
+        style={{
+          letterSpacing: "6px",
+          fontSize: "12px",
+          marginBottom: "20px",
+          color: "#d6c3a3",
+          textTransform: "uppercase",
+        }}
+      >
+        Orange County Real Estate
+      </p>
 
-        {/* DARK OVERLAY */}
-        <div style={{
-          position: "absolute",
-          inset: 0,
-          background: "rgba(0,0,0,0.45)"
-        }} />
-
-        {/* HERO CONTENT */}
-        <div style={{
-          position: "relative",
-          zIndex: 2,
-          display: "flex",
-          alignItems: "center",
-          gap: "60px",
-          maxWidth: "1200px",
-          width: "100%",
-          justifyContent: "flex-start",
-          paddingLeft: "40px",
-          flexWrap: "wrap"
-        }}>
-
-          {/* LEFT - HEADSHOT (SMALLER + LEFT SHIFTED) */}
-          <img
-            src="https://res.cloudinary.com/dujnu0pgr/image/upload/f_auto,q_auto:best,w_800/headshot_tckbah"
-            style={{
-              width: "315px",   // 75% of 420px
-              height: "390px",  // scaled proportionally
-              objectFit: "cover",
-              borderRadius: "12px",
-              boxShadow: "0 40px 100px rgba(0,0,0,0.3)"
-            }}
-          />
-
-          {/* RIGHT - TEXT */}
-          <div style={{ color: "#fff", maxWidth: "500px" }}>
-            <h1 style={{ fontSize: "80px", fontWeight: "300", lineHeight: "1.1" }}>
-              Cameron Fono
-            </h1>
-
-            <p style={{ letterSpacing: "4px", marginTop: "15px", color: "#eaeaea" }}>
-              ORANGE COUNTY REAL ESTATE
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* BIO */}
-      <section style={{
-        padding: "140px 20px",
-        display: "flex",
-        justifyContent: "center"
-      }}>
-        <div style={{ maxWidth: "700px", textAlign: "center" }}>
-          
-          <h2 style={{ fontSize: "48px", fontWeight: "300" }}>
-            Meet Cameron
-          </h2>
-
-          <p style={{ marginTop: "30px", lineHeight: "1.9", color: "#555" }}>
-            Meet Cameron, your dedicated real estate agent with a deep understanding of the local market.
-            Born and raised in Orange County, Cameron knows the area inside and out.
-          </p>
-
-          <p style={{ marginTop: "20px", lineHeight: "1.9", color: "#555" }}>
-            His background as a sponsored skateboarder instilled a relentless, no-quit mindset that drives his success in real estate.
-            With a reputation built on 5-star experiences, Cameron provides expert guidance and personalized service every step of the way.
-          </p>
-
-          <p style={{ marginTop: "20px", lineHeight: "1.9", color: "#555" }}>
-            Whether you're a first-time buyer or a seasoned investor, Cameron is committed to delivering exceptional results with precision, communication, and care.
-          </p>
-
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section style={{
-        padding: "120px 40px",
-        background: "#ffffff"
-      }}>
-        <h2 style={{
-          textAlign: "center",
-          fontSize: "42px",
+      <h1
+        style={{
+          fontSize: "92px",
           fontWeight: "300",
-          marginBottom: "60px"
-        }}>
-          Client Experiences
-        </h2>
+          lineHeight: "1.05",
+          fontFamily: "Playfair Display, serif",
+        }}
+      >
+        Cameron Fono
+      </h1>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-          gap: "30px",
-          maxWidth: "1200px",
-          margin: "0 auto"
-        }}>
+      <p
+        style={{
+          marginTop: "25px",
+          fontSize: "16px",
+          lineHeight: "1.8",
+          color: "#eaeaea",
+          maxWidth: "420px",
+        }}
+      >
+        A refined approach to buying and selling in Orange County — built on precision, communication, and results.
+      </p>
 
-          {[
-            { text: "Cameron made the entire home selling process seamless and stress-free. His communication, professionalism, and market knowledge were exceptional." },
-            { text: "Cameron helped me find a long-term home that checked every box. His dedication and communication made the process incredibly smooth." },
-            { text: "When searching for a home, especially in Huntington Beach, Cameron is the agent to call. He handled every step efficiently and communicated clearly throughout." },
-            { text: "We were in a difficult situation and Cameron made himself available immediately. He is patient, highly competent, and someone you can rely on." },
-            { text: "Cameron’s professionalism and dedication stood out from the beginning. His market knowledge and commitment are unmatched." },
-            { text: "Choosing Cameron was one of the best decisions I made. He goes above and beyond and was there every step of the way." }
-          ].map((review, i) => (
-            <div key={i} style={{
-              padding: "30px",
-              background: "#f8f6f2",
-              borderRadius: "12px",
-              boxShadow: "0 20px 50px rgba(0,0,0,0.05)"
-            }}>
-              <p style={{ lineHeight: "1.8", color: "#555" }}>
-                “{review.text}”
-              </p>
-            </div>
-          ))}
+      {/* CTA BUTTON */}
+      <div style={{ marginTop: "40px" }}>
+        <button
+          style={{
+            padding: "14px 32px",
+            border: "1px solid #c6a87d",
+            background: "transparent",
+            color: "#fff",
+            letterSpacing: "2px",
+            fontSize: "12px",
+            textTransform: "uppercase",
+            cursor: "pointer",
+          }}
+        >
+          View Listings
+        </button>
+      </div>
 
-        </div>
-      </section>
+    </div>
+  </div>
 
-      {/* FOOTER */}
-      <footer style={{
-        background: "#111",
-        color: "#fff",
-        padding: "100px 40px",
-        textAlign: "center"
-      }}>
-
-        <h2 style={{ fontWeight: "300", fontSize: "40px" }}>
-          Cameron Fono
-        </h2>
-
-        <p style={{ marginTop: "10px", color: "#aaa" }}>
-          Seacliff Team
-        </p>
-
-        <div style={{ marginTop: "40px", lineHeight: "2" }}>
-          <p>
-            📞 <a href="tel:17142514244" style={{ color: "#fff", textDecoration: "none" }}>
-              714-251-4244
-            </a>
-          </p>
-
-          <p>
-            ✉️ <a href="mailto:cameron@fonohomes.com" style={{ color: "#fff", textDecoration: "none" }}>
-              cameron@fonohomes.com
-            </a>
-          </p>
-
-          <p>DRE# 02206167</p>
-
-          <p style={{ marginTop: "10px" }}>
-            19440 Goldenwest St.<br />
-            Huntington Beach, CA 92648
-          </p>
-        </div>
-
-        <div style={{
-          marginTop: "40px",
-          display: "flex",
-          justifyContent: "center",
-          gap: "25px",
-          flexWrap: "wrap"
-        }}>
-          <a href="https://www.facebook.com/cameron.fono" target="_blank" style={{ color: "#fff" }}>Facebook</a>
-          <a href="https://www.instagram.com/cameronfonohomes/" target="_blank" style={{ color: "#fff" }}>Instagram</a>
-          <a href="https://www.tiktok.com/@cameronfono" target="_blank" style={{ color: "#fff" }}>TikTok</a>
-          <a href="https://www.linkedin.com/in/cameron-fono-5b0615267/" target="_blank" style={{ color: "#fff" }}>LinkedIn</a>
-        </div>
-
-      </footer>
-
-    </main>
-  );
-}
+  {/* SUBTLE BOTTOM FADE (luxury touch) */}
+  <div
+    style={{
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      width: "100%",
+      height: "120px",
+      background:
+        "linear-gradient(to top, rgba(0,0,0,0.7), transparent)",
+    }}
+  />
+</section>
