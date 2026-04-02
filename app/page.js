@@ -27,11 +27,12 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* HERO */}
+      {/* HERO (DRONE HB IMAGE) */}
       <section style={{
         height: "100vh",
-        backgroundImage: "url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85')",
+        backgroundImage: "url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')",
         backgroundSize: "cover",
+        backgroundPosition: "center",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -39,10 +40,10 @@ export default function Home() {
         paddingTop: "80px"
       }}>
         <div>
-          <h1 style={{ fontSize: "90px", fontWeight: "300" }}>
+          <h1 style={{ fontSize: "90px", fontWeight: "300", color: "#fff" }}>
             Cameron Fono
           </h1>
-          <p style={{ letterSpacing: "4px", color: "#8c7a5b" }}>
+          <p style={{ letterSpacing: "4px", color: "#eaeaea" }}>
             ORANGE COUNTY REAL ESTATE
           </p>
         </div>
@@ -96,7 +97,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* TESTIMONIALS (6 REVIEWS) */}
       <section style={{
         padding: "120px 40px",
         background: "#ffffff"
@@ -120,25 +121,22 @@ export default function Home() {
 
           {[
             {
-              text: "Cameron made the entire home selling process seamless and stress-free. His communication, professionalism, and market knowledge were exceptional. He guided us every step of the way and ensured everything went smoothly. We would highly recommend him to anyone.",
+              text: "Cameron made the entire home selling process seamless and stress-free. His communication, professionalism, and market knowledge were exceptional."
             },
             {
-              text: "Cameron helped me find a long-term home that checked every box. His dedication, communication, and ability to connect me with the right resources made the process incredibly smooth. He was there even after the move — exactly the kind of agent you want in your corner.",
+              text: "Cameron helped me find a long-term home that checked every box. His dedication and communication made the process incredibly smooth."
             },
             {
-              text: "Cameron was very helpful and professional. Quick to respond, and would definitely recommend.",
+              text: "When searching for a home, especially in Huntington Beach, Cameron is the agent to call. He handled every step efficiently and communicated clearly throughout."
             },
             {
-              text: "When searching for a home, especially in Huntington Beach, Cameron is the agent to call. He is enthusiastic, highly professional, and incredibly responsive. From inspections to escrow, he handled every step efficiently and communicated clearly throughout the entire process.",
+              text: "We were in a difficult situation and Cameron made himself available immediately. He is patient, highly competent, and someone you can rely on."
             },
             {
-              text: "We were in a difficult situation and Cameron made himself available immediately, even on short notice. He is patient, highly competent, and someone you can rely on when it matters most.",
+              text: "Cameron’s professionalism and dedication stood out from the beginning. His market knowledge and commitment are unmatched."
             },
             {
-              text: "Cameron’s professionalism and dedication stood out from the beginning. He handled challenges with confidence and delivered results. His market knowledge and commitment to his clients are unmatched.",
-            },
-            {
-              text: "Choosing Cameron was one of the best decisions I made. He is attentive, always available, and goes above and beyond — even helping with details right up until closing. I couldn’t have done it without him.",
+              text: "Choosing Cameron was one of the best decisions I made. He goes above and beyond and was there every step of the way."
             }
           ].map((review, i) => (
             <div key={i} style={{
@@ -155,6 +153,48 @@ export default function Home() {
 
         </div>
       </section>
+
+      {/* FOOTER (LUXURY STYLE) */}
+      <footer style={{
+        background: "#111",
+        color: "#fff",
+        padding: "100px 40px",
+        textAlign: "center"
+      }}>
+
+        <h2 style={{ fontWeight: "300", fontSize: "40px" }}>
+          Cameron Fono
+        </h2>
+
+        <p style={{ marginTop: "10px", color: "#aaa" }}>
+          Orange County Real Estate
+        </p>
+
+        <div style={{ marginTop: "40px", lineHeight: "2" }}>
+          <p>📞 714-251-4244</p>
+          <p>✉️ cameron@fonohomes.com</p>
+          <p>DRE# 02206167</p>
+        </div>
+
+        {/* SOCIALS */}
+        <div style={{
+          marginTop: "40px",
+          display: "flex",
+          justifyContent: "center",
+          gap: "25px",
+          flexWrap: "wrap"
+        }}>
+          <a href="https://www.facebook.com/cameron.fono" target="_blank" style={{ color: "#fff" }}>Facebook</a>
+          <a href="https://www.instagram.com/cameronfonohomes/" target="_blank" style={{ color: "#fff" }}>Instagram</a>
+          <a href="https://www.tiktok.com/@cameronfono" target="_blank" style={{ color: "#fff" }}>TikTok</a>
+          <a href="https://www.linkedin.com/in/cameron-fono-5b0615267/" target="_blank" style={{ color: "#fff" }}>LinkedIn</a>
+        </div>
+
+        <p style={{ marginTop: "50px", color: "#666", fontSize: "14px" }}>
+          © {new Date().getFullYear()} Cameron Fono. All rights reserved.
+        </p>
+
+      </footer>
 
     </main>
   );
