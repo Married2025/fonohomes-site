@@ -149,7 +149,7 @@ export default function Home() {
             flexWrap: "wrap",
           }}
         >
-          {/* HEADSHOT */}
+          {/* HEADSHOT (FIXED SHARPNESS) */}
           <div
             style={{
               width: "380px",
@@ -167,8 +167,7 @@ export default function Home() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                objectPosition: "center top",
-                transform: "scale(1.05)",
+                objectPosition: "center 20%",
               }}
             />
 
@@ -177,7 +176,7 @@ export default function Home() {
                 position: "absolute",
                 inset: 0,
                 background:
-                  "linear-gradient(to top, rgba(0,0,0,0.15), rgba(0,0,0,0))",
+                  "linear-gradient(to top, rgba(0,0,0,0.12), rgba(0,0,0,0))",
               }}
             />
           </div>
