@@ -27,7 +27,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* HERO - YOUR HB PIER IMAGE */}
+      {/* HERO */}
       <section style={{
         height: "100vh",
         backgroundImage: "url('/hb-pier.jpg')",
@@ -45,63 +45,62 @@ export default function Home() {
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "rgba(0,0,0,0.35)"
+          background: "rgba(0,0,0,0.4)"
         }} />
 
+        {/* HERO CONTENT */}
         <div style={{ position: "relative", zIndex: 2 }}>
-          <h1 style={{ fontSize: "90px", fontWeight: "300", color: "#fff" }}>
+
+          {/* HEADSHOT */}
+          <img
+            src="https://res.cloudinary.com/dujnu0pgr/image/upload/f_auto,q_auto:best,w_800/headshot_tckbah"
+            style={{
+              width: "140px",
+              height: "140px",
+              objectFit: "cover",
+              borderRadius: "50%",
+              marginBottom: "30px",
+              border: "3px solid white",
+              boxShadow: "0 10px 40px rgba(0,0,0,0.3)"
+            }}
+          />
+
+          <h1 style={{ fontSize: "80px", fontWeight: "300", color: "#fff" }}>
             Cameron Fono
           </h1>
-          <p style={{ letterSpacing: "4px", color: "#eaeaea" }}>
+
+          <p style={{ letterSpacing: "4px", color: "#eaeaea", marginTop: "10px" }}>
             ORANGE COUNTY REAL ESTATE
           </p>
+
         </div>
       </section>
 
-      {/* BIO */}
+      {/* BIO (TEXT ONLY NOW) */}
       <section style={{
         padding: "140px 20px",
         display: "flex",
         justifyContent: "center"
       }}>
-        <div style={{
-          maxWidth: "1200px",
-          display: "flex",
-          gap: "100px",
-          alignItems: "center",
-          flexWrap: "wrap"
-        }}>
+        <div style={{ maxWidth: "700px", textAlign: "center" }}>
+          
+          <h2 style={{ fontSize: "48px", fontWeight: "300" }}>
+            Meet Cameron
+          </h2>
 
-          <img
-            src="https://res.cloudinary.com/dujnu0pgr/image/upload/f_auto,q_auto:best,w_800/headshot_tckbah"
-            style={{
-              width: "420px",
-              height: "520px",
-              objectFit: "cover",
-              borderRadius: "12px",
-              boxShadow: "0 40px 100px rgba(0,0,0,0.1)"
-            }}
-          />
+          <p style={{ marginTop: "30px", lineHeight: "1.9", color: "#555" }}>
+            Meet Cameron, your dedicated real estate agent with a deep understanding of the local market.
+            Born and raised in Orange County, Cameron knows the area inside and out.
+          </p>
 
-          <div style={{ maxWidth: "520px" }}>
-            <h2 style={{ fontSize: "48px", fontWeight: "300" }}>
-              Meet Cameron
-            </h2>
+          <p style={{ marginTop: "20px", lineHeight: "1.9", color: "#555" }}>
+            His background as a sponsored skateboarder instilled a relentless, no-quit mindset that drives his success in real estate.
+            With a reputation built on 5-star experiences, Cameron provides expert guidance and personalized service every step of the way.
+          </p>
 
-            <p style={{ marginTop: "20px", lineHeight: "1.9", color: "#555" }}>
-              Meet Cameron, your dedicated real estate agent with a deep understanding of the local market.
-              Born and raised in Orange County, Cameron knows the area inside and out.
-            </p>
-
-            <p style={{ marginTop: "20px", lineHeight: "1.9", color: "#555" }}>
-              His background as a sponsored skateboarder instilled a relentless, no-quit mindset that drives his success in real estate.
-              With a reputation built on 5-star experiences, Cameron provides expert guidance and personalized service every step of the way.
-            </p>
-
-            <p style={{ marginTop: "20px", lineHeight: "1.9", color: "#555" }}>
-              Whether you're a first-time buyer or a seasoned investor, Cameron is committed to delivering exceptional results with precision, communication, and care.
-            </p>
-          </div>
+          <p style={{ marginTop: "20px", lineHeight: "1.9", color: "#555" }}>
+            Whether you're a first-time buyer or a seasoned investor, Cameron is committed to delivering exceptional results with precision, communication, and care.
+          </p>
 
         </div>
       </section>
@@ -200,10 +199,6 @@ export default function Home() {
           <a href="https://www.tiktok.com/@cameronfono" target="_blank" style={{ color: "#fff" }}>TikTok</a>
           <a href="https://www.linkedin.com/in/cameron-fono-5b0615267/" target="_blank" style={{ color: "#fff" }}>LinkedIn</a>
         </div>
-
-        <p style={{ marginTop: "50px", color: "#666", fontSize: "14px" }}>
-          © {new Date().getFullYear()} Cameron Fono. All rights reserved.
-        </p>
 
       </footer>
 
