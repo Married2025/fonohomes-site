@@ -1,4 +1,4 @@
-<main style={{ background: "#0b0b0c", color: "#eaeaea", fontFamily: "Helvetica Neue, sans-serif" }}>
+<main style={{ background: "#f8f6f2", color: "#1a1a1a", fontFamily: "Helvetica Neue, sans-serif" }}>
 
   {/* HERO */}
   <section
@@ -6,7 +6,7 @@
       position: "relative",
       height: "100vh",
       backgroundImage:
-        "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
+        "url('https://images.unsplash.com/photo-1505691938895-1758d7feb511')",
       backgroundSize: "cover",
       backgroundPosition: "center",
       display: "flex",
@@ -20,16 +20,16 @@
         position: "absolute",
         inset: 0,
         background:
-          "linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75))"
+          "linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0.75))"
       }}
     />
 
-    <div style={{ position: "relative", zIndex: 2, maxWidth: "900px" }}>
+    <div style={{ position: "relative", zIndex: 2 }}>
       <h1
         style={{
-          fontSize: "90px",
+          fontSize: "80px",
           fontWeight: "300",
-          letterSpacing: "2px"
+          letterSpacing: "1px"
         }}
       >
         Cameron Fono
@@ -37,25 +37,23 @@
 
       <p
         style={{
-          color: "#bfa46f",
           marginTop: "10px",
-          letterSpacing: "3px"
+          letterSpacing: "3px",
+          color: "#8c7a5b"
         }}
       >
         ORANGE COUNTY REAL ESTATE
       </p>
 
-      <div style={{ marginTop: "50px" }}>
+      <div style={{ marginTop: "40px" }}>
         <button
           onClick={() => setShowPopup(true)}
           style={{
             marginRight: "15px",
-            padding: "16px 40px",
-            background: "#bfa46f",
-            color: "#000",
+            padding: "14px 36px",
+            background: "#1a1a1a",
+            color: "#fff",
             border: "none",
-            fontWeight: "500",
-            letterSpacing: "1px",
             cursor: "pointer"
           }}
         >
@@ -65,11 +63,10 @@
         <button
           onClick={() => setShowSellerPopup(true)}
           style={{
-            padding: "16px 40px",
+            padding: "14px 36px",
             background: "transparent",
-            color: "#eaeaea",
-            border: "1px solid #bfa46f",
-            letterSpacing: "1px",
+            color: "#1a1a1a",
+            border: "1px solid #1a1a1a",
             cursor: "pointer"
           }}
         >
@@ -91,20 +88,21 @@
       style={{
         maxWidth: "1100px",
         display: "flex",
-        gap: "60px",
+        gap: "80px",
         alignItems: "center",
         flexWrap: "wrap"
       }}
     >
       {/* HEADSHOT */}
       <img
-        src="/your-headshot.jpg" // 🔥 replace with your image
+        src="/headshot.jpg"
         alt="Cameron Fono"
         style={{
-          width: "350px",
-          height: "450px",
+          width: "380px",
+          height: "500px",
           objectFit: "cover",
-          borderRadius: "6px"
+          borderRadius: "8px",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.08)"
         }}
       />
 
@@ -112,24 +110,25 @@
       <div style={{ maxWidth: "500px" }}>
         <h2
           style={{
-            fontSize: "40px",
+            fontSize: "42px",
             fontWeight: "300",
             marginBottom: "20px"
           }}
         >
-          Elevated Real Estate Experience
+          Coastal Real Estate, Elevated
         </h2>
 
-        <p style={{ color: "#aaa", lineHeight: "1.8" }}>
-          Cameron Fono specializes in delivering a refined, client-first real
-          estate experience across Orange County. With a focus on strategic
-          marketing, strong negotiation, and elevated presentation, Cameron
-          helps buyers and sellers achieve exceptional results in every market.
+        <p style={{ color: "#555", lineHeight: "1.9" }}>
+          Cameron Fono delivers a refined, client-focused real estate experience
+          across Orange County’s most desirable coastal communities. With a
+          modern approach to marketing and a deep understanding of local market
+          trends, every transaction is handled with precision and care.
         </p>
 
-        <p style={{ color: "#aaa", marginTop: "20px", lineHeight: "1.8" }}>
-          Whether you're searching for your next home or maximizing your
-          property's value, every detail is handled with precision and care.
+        <p style={{ color: "#555", marginTop: "20px", lineHeight: "1.9" }}>
+          From ocean-view properties to investment opportunities, Cameron
+          provides strategic guidance designed to help clients move confidently
+          and maximize results.
         </p>
       </div>
     </div>
