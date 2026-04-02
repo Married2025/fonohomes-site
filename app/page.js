@@ -53,19 +53,20 @@ export default function Home() {
           zIndex: 2,
           display: "flex",
           alignItems: "center",
-          gap: "80px",
+          gap: "60px",
           maxWidth: "1200px",
           width: "100%",
-          justifyContent: "center",
+          justifyContent: "flex-start",
+          paddingLeft: "40px",
           flexWrap: "wrap"
         }}>
 
-          {/* LEFT - HEADSHOT (LARGE) */}
+          {/* LEFT - HEADSHOT (SMALLER + LEFT SHIFTED) */}
           <img
             src="https://res.cloudinary.com/dujnu0pgr/image/upload/f_auto,q_auto:best,w_800/headshot_tckbah"
             style={{
-              width: "420px",
-              height: "520px",
+              width: "315px",   // 75% of 420px
+              height: "390px",  // scaled proportionally
               objectFit: "cover",
               borderRadius: "12px",
               boxShadow: "0 40px 100px rgba(0,0,0,0.3)"
