@@ -27,10 +27,10 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* HERO (DRONE HB IMAGE) */}
+      {/* HERO - HB PIER DRONE */}
       <section style={{
         height: "100vh",
-        backgroundImage: "url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')",
+        backgroundImage: "url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "flex",
@@ -97,7 +97,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS (6 REVIEWS) */}
+      {/* TESTIMONIALS */}
       <section style={{
         padding: "120px 40px",
         background: "#ffffff"
@@ -120,24 +120,12 @@ export default function Home() {
         }}>
 
           {[
-            {
-              text: "Cameron made the entire home selling process seamless and stress-free. His communication, professionalism, and market knowledge were exceptional."
-            },
-            {
-              text: "Cameron helped me find a long-term home that checked every box. His dedication and communication made the process incredibly smooth."
-            },
-            {
-              text: "When searching for a home, especially in Huntington Beach, Cameron is the agent to call. He handled every step efficiently and communicated clearly throughout."
-            },
-            {
-              text: "We were in a difficult situation and Cameron made himself available immediately. He is patient, highly competent, and someone you can rely on."
-            },
-            {
-              text: "Cameron’s professionalism and dedication stood out from the beginning. His market knowledge and commitment are unmatched."
-            },
-            {
-              text: "Choosing Cameron was one of the best decisions I made. He goes above and beyond and was there every step of the way."
-            }
+            { text: "Cameron made the entire home selling process seamless and stress-free. His communication, professionalism, and market knowledge were exceptional." },
+            { text: "Cameron helped me find a long-term home that checked every box. His dedication and communication made the process incredibly smooth." },
+            { text: "When searching for a home, especially in Huntington Beach, Cameron is the agent to call. He handled every step efficiently and communicated clearly throughout." },
+            { text: "We were in a difficult situation and Cameron made himself available immediately. He is patient, highly competent, and someone you can rely on." },
+            { text: "Cameron’s professionalism and dedication stood out from the beginning. His market knowledge and commitment are unmatched." },
+            { text: "Choosing Cameron was one of the best decisions I made. He goes above and beyond and was there every step of the way." }
           ].map((review, i) => (
             <div key={i} style={{
               padding: "30px",
@@ -154,7 +142,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER (LUXURY STYLE) */}
+      {/* FOOTER */}
       <footer style={{
         background: "#111",
         color: "#fff",
@@ -167,13 +155,28 @@ export default function Home() {
         </h2>
 
         <p style={{ marginTop: "10px", color: "#aaa" }}>
-          Orange County Real Estate
+          Seacliff Team
         </p>
 
         <div style={{ marginTop: "40px", lineHeight: "2" }}>
-          <p>📞 714-251-4244</p>
-          <p>✉️ cameron@fonohomes.com</p>
+          <p>
+            📞 <a href="tel:17142514244" style={{ color: "#fff", textDecoration: "none" }}>
+              714-251-4244
+            </a>
+          </p>
+
+          <p>
+            ✉️ <a href="mailto:cameron@fonohomes.com" style={{ color: "#fff", textDecoration: "none" }}>
+              cameron@fonohomes.com
+            </a>
+          </p>
+
           <p>DRE# 02206167</p>
+
+          <p style={{ marginTop: "10px" }}>
+            19440 Goldenwest St.<br />
+            Huntington Beach, CA 92648
+          </p>
         </div>
 
         {/* SOCIALS */}
