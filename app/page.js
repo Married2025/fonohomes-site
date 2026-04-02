@@ -26,11 +26,21 @@ e.preventDefault();
 ```
 await fetch("PASTE_YOUR_ZAPIER_WEBHOOK_URL_HERE", {
   method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
   body: JSON.stringify(formData),
 });
 
 alert("Request submitted!");
 setShowForm(false);
+
+setFormData({
+  name: "",
+  phone: "",
+  email: "",
+  address: "",
+});
 ```
 
 };
@@ -218,7 +228,6 @@ color: "#111",
 );
 }
 
-/* STYLES */
 const buttonStyleGold = {
 padding: "14px 30px",
 border: "1px solid #c6a87d",
