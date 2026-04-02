@@ -1,263 +1,136 @@
-"use client";
-import { useState } from "react";
+<main style={{ background: "#0b0b0c", color: "#eaeaea", fontFamily: "Helvetica Neue, sans-serif" }}>
 
-export default function Home() {
-  const [showPopup, setShowPopup] = useState(false);
-  const [showSellerPopup, setShowSellerPopup] = useState(false);
+  {/* HERO */}
+  <section
+    style={{
+      position: "relative",
+      height: "100vh",
+      backgroundImage:
+        "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center"
+    }}
+  >
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        background:
+          "linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75))"
+      }}
+    />
 
-  const [email, setEmail] = useState("");
-  const [sellerEmail, setSellerEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-
-  const handleBuyerSubmit = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("type", "buyer");
-      formData.append("email", email);
-
-      await fetch("https://hooks.zapier.com/hooks/catch/26970318/unccakj/", {
-        method: "POST",
-        body: formData
-      });
-
-      window.location.href =
-        "https://portal.onehome.com/en-US/share/2612211U90323";
-    } catch (error) {
-      alert("Something went wrong. Please try again.");
-    }
-  };
-
-  const handleSellerSubmit = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("type", "seller");
-      formData.append("email", sellerEmail);
-      formData.append("phone", phone);
-      formData.append("address", address);
-
-      await fetch("https://hooks.zapier.com/hooks/catch/26970318/unccakj/", {
-        method: "POST",
-        body: formData
-      });
-
-      alert("We received your info. We'll reach out shortly.");
-      setShowSellerPopup(false);
-    } catch (error) {
-      alert("Something went wrong. Please try again.");
-    }
-  };
-
-  return (
-    <main style={{ background: "#0a0a0a", color: "#fff", fontFamily: "Arial" }}>
-      <section
+    <div style={{ position: "relative", zIndex: 2, maxWidth: "900px" }}>
+      <h1
         style={{
-          position: "relative",
-          height: "95vh",
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center"
+          fontSize: "90px",
+          fontWeight: "300",
+          letterSpacing: "2px"
         }}
       >
-        <div
+        Cameron Fono
+      </h1>
+
+      <p
+        style={{
+          color: "#bfa46f",
+          marginTop: "10px",
+          letterSpacing: "3px"
+        }}
+      >
+        ORANGE COUNTY REAL ESTATE
+      </p>
+
+      <div style={{ marginTop: "50px" }}>
+        <button
+          onClick={() => setShowPopup(true)}
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background:
-              "linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.6))"
-          }}
-        />
-
-        <div style={{ position: "relative", zIndex: 2 }}>
-          <h1 style={{ fontSize: "72px" }}>Cameron Fono</h1>
-          <p style={{ color: "#ccc" }}>ORANGE COUNTY REAL ESTATE</p>
-
-          <div style={{ marginTop: "30px" }}>
-            <button
-              onClick={() => setShowPopup(true)}
-              style={{
-                marginRight: "12px",
-                padding: "14px 36px",
-                background: "#fff",
-                color: "#000",
-                border: "none"
-              }}
-            >
-              VIEW OUR LISTINGS
-            </button>
-
-            <button
-              onClick={() => setShowSellerPopup(true)}
-              style={{
-                padding: "14px 36px",
-                background: "transparent",
-                color: "#fff",
-                border: "1px solid #aaa"
-              }}
-            >
-              GET HOME VALUE
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* BUYER POPUP */}
-      {showPopup && (
-        <div
-          onClick={() => setShowPopup(false)}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0,0,0,0.8)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 9999
+            marginRight: "15px",
+            padding: "16px 40px",
+            background: "#bfa46f",
+            color: "#000",
+            border: "none",
+            fontWeight: "500",
+            letterSpacing: "1px",
+            cursor: "pointer"
           }}
         >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              background: "#111",
-              padding: "40px",
-              borderRadius: "10px",
-              width: "320px",
-              position: "relative"
-            }}
-          >
-            <button
-              onClick={() => setShowPopup(false)}
-              style={{
-                position: "absolute",
-                top: "10px",
-                right: "12px",
-                background: "transparent",
-                color: "#aaa",
-                border: "none",
-                fontSize: "20px"
-              }}
-            >
-              ×
-            </button>
+          VIEW LISTINGS
+        </button>
 
-            <h2>Access Listings</h2>
-
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              style={{ width: "100%", padding: "10px", marginTop: "10px" }}
-            />
-
-            <button
-              onClick={handleBuyerSubmit}
-              style={{
-                marginTop: "15px",
-                width: "100%",
-                padding: "10px",
-                background: "#fff",
-                color: "#000",
-                border: "none"
-              }}
-            >
-              View Homes
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* SELLER POPUP */}
-      {showSellerPopup && (
-        <div
-          onClick={() => setShowSellerPopup(false)}
+        <button
+          onClick={() => setShowSellerPopup(true)}
           style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0,0,0,0.8)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 9999
+            padding: "16px 40px",
+            background: "transparent",
+            color: "#eaeaea",
+            border: "1px solid #bfa46f",
+            letterSpacing: "1px",
+            cursor: "pointer"
           }}
         >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              background: "#111",
-              padding: "40px",
-              borderRadius: "10px",
-              width: "320px",
-              position: "relative"
-            }}
-          >
-            <button
-              onClick={() => setShowSellerPopup(false)}
-              style={{
-                position: "absolute",
-                top: "10px",
-                right: "12px",
-                background: "transparent",
-                color: "#aaa",
-                border: "none",
-                fontSize: "20px"
-              }}
-            >
-              ×
-            </button>
+          GET HOME VALUE
+        </button>
+      </div>
+    </div>
+  </section>
 
-            <h2>Get Your Home Value</h2>
+  {/* BIO SECTION */}
+  <section
+    style={{
+      padding: "120px 20px",
+      display: "flex",
+      justifyContent: "center"
+    }}
+  >
+    <div
+      style={{
+        maxWidth: "1100px",
+        display: "flex",
+        gap: "60px",
+        alignItems: "center",
+        flexWrap: "wrap"
+      }}
+    >
+      {/* HEADSHOT */}
+      <img
+        src="/your-headshot.jpg" // 🔥 replace with your image
+        alt="Cameron Fono"
+        style={{
+          width: "350px",
+          height: "450px",
+          objectFit: "cover",
+          borderRadius: "6px"
+        }}
+      />
 
-            <input
-              value={sellerEmail}
-              onChange={(e) => setSellerEmail(e.target.value)}
-              placeholder="Email"
-              style={{ width: "100%", padding: "10px", marginTop: "10px" }}
-            />
+      {/* BIO TEXT */}
+      <div style={{ maxWidth: "500px" }}>
+        <h2
+          style={{
+            fontSize: "40px",
+            fontWeight: "300",
+            marginBottom: "20px"
+          }}
+        >
+          Elevated Real Estate Experience
+        </h2>
 
-            <input
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Phone"
-              style={{ width: "100%", padding: "10px", marginTop: "10px" }}
-            />
+        <p style={{ color: "#aaa", lineHeight: "1.8" }}>
+          Cameron Fono specializes in delivering a refined, client-first real
+          estate experience across Orange County. With a focus on strategic
+          marketing, strong negotiation, and elevated presentation, Cameron
+          helps buyers and sellers achieve exceptional results in every market.
+        </p>
 
-            <input
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              placeholder="Property Address"
-              style={{ width: "100%", padding: "10px", marginTop: "10px" }}
-            />
-
-            <button
-              onClick={handleSellerSubmit}
-              style={{
-                marginTop: "15px",
-                width: "100%",
-                padding: "10px",
-                background: "#fff",
-                color: "#000",
-                border: "none"
-              }}
-            >
-              Get My Home Value
-            </button>
-          </div>
-        </div>
-      )}
-    </main>
-  );
-}
+        <p style={{ color: "#aaa", marginTop: "20px", lineHeight: "1.8" }}>
+          Whether you're searching for your next home or maximizing your
+          property's value, every detail is handled with precision and care.
+        </p>
+      </div>
+    </div>
+  </section>
