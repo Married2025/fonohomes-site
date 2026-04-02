@@ -23,7 +23,7 @@ export default function Home() {
 
       window.location.href =
         "https://portal.onehome.com/en-US/share/2612211U90323";
-    } catch (error) {
+    } catch {
       alert("Something went wrong. Please try again.");
     }
   };
@@ -43,7 +43,7 @@ export default function Home() {
 
       alert("We received your info. We'll reach out shortly.");
       setShowSellerPopup(false);
-    } catch (error) {
+    } catch {
       alert("Something went wrong. Please try again.");
     }
   };
@@ -62,7 +62,7 @@ export default function Home() {
           position: "relative",
           height: "100vh",
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1505691938895-1758d7feb511')",
+            "url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "flex",
@@ -149,18 +149,38 @@ export default function Home() {
             flexWrap: "wrap",
           }}
         >
-          {/* HEADSHOT */}
-          <img
-            src="/headshot.jpg"
-            alt="Cameron Fono"
+          {/* HEADSHOT (UPGRADED) */}
+          <div
             style={{
               width: "380px",
               height: "500px",
-              objectFit: "cover",
-              borderRadius: "8px",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
+              overflow: "hidden",
+              borderRadius: "12px",
+              boxShadow: "0 30px 80px rgba(0,0,0,0.12)",
+              position: "relative",
             }}
-          />
+          >
+            <img
+              src="/headshot.jpg"
+              alt="Cameron Fono"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center top",
+                transform: "scale(1.05)",
+              }}
+            />
+
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(to top, rgba(0,0,0,0.15), rgba(0,0,0,0))",
+              }}
+            />
+          </div>
 
           {/* BIO TEXT */}
           <div style={{ maxWidth: "500px" }}>
