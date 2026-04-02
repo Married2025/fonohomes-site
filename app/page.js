@@ -115,7 +115,7 @@ export default function Home() {
             />
 
             <img
-              src="/headshot.png"
+              src="https://res.cloudinary.com/dujnu0pgr/image/upload/f_auto,q_auto,w_900/new_headshot_no_background_yzlkph"
               style={{
                 width: "420px",
                 height: "auto",
